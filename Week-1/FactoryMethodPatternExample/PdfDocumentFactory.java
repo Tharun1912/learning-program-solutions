@@ -1,0 +1,8 @@
+package FactoryMethodPatternExample;
+
+//File: PdfDocumentFactory.java
+public class PdfDocumentFactory extends DocumentFactory {
+ public Document createDocument() {
+     return new PdfDocument();
+ }
+}
