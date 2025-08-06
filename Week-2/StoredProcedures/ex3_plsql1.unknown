@@ -1,0 +1,11 @@
+--ex3,scenario-1
+CREATE OR REPLACE PROCEDURE ProcessMonthlyInterest()
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE SavingsAccounts
+    SET Balance = Balance + (Balance * 0.01);
+
+    RAISE NOTICE 'Monthly interest applied to all savings accounts.';
+END;
+$$;

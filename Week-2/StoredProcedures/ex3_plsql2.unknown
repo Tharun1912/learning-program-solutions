@@ -1,0 +1,12 @@
+--Ex-3_scenario-2
+CREATE OR REPLACE PROCEDURE UpdateEmployeeBonus(dept TEXT, bonus_percent NUMERIC)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE Employees
+    SET Salary = Salary + (Salary * (bonus_percent / 100))
+    WHERE Department = dept;
+
+    RAISE NOTICE 'Bonus of %%% applied to department %', bonus_percent, dept;
+END;
+$$;

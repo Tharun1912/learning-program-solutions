@@ -1,0 +1,13 @@
+DO $$
+DECLARE
+    rec RECORD;
+BEGIN
+    FOR rec IN
+        SELECT L.LoanID, C.Name, L.DueDate
+        FROM Loans L
+        JOIN Customers C ON L.CustomerID = C.CustomerID
+        WHERE L.DueDate <= CURRENT_DATE + INTERVAL '30 days'
+    LOOP
+        RAISE NOTICE 'Reminder: %''s loan (ID: %) is due on %', rec.Name, rec.LoanID, rec.DueDate;
+    END LOOP;
+END $$;
